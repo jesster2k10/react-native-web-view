@@ -1,21 +1,15 @@
-import React from 'react';
-import { WebView } from 'react-native';
-import injectPostMessage from './inject-post-message';
+import React from "react";
+import { WebView } from "react-native-webview";
+import injectPostMessage from "./inject-post-message";
 
-const unescape = str =>
-  str.replace(/\\'/g, '\'');
+const unescape = str => str.replace(/\\'/g, "'");
 
 class WebViewPostMessage extends React.PureComponent {
-
   handleNavigationStateChange = e => {
-
     // If this navigation state contains a message to post, post it.
     const postMessage = e.url.match(/\#window\.postMessage\('(.+)'\)$/);
     if (postMessage) {
-      if (
-        e.loading &&
-        this.props.onMessage
-      ) {
+      if (e.loading && this.props.onMessage) {
         this.props.onMessage({
           nativeEvent: {
             data: unescape(postMessage[1])
@@ -26,10 +20,7 @@ class WebViewPostMessage extends React.PureComponent {
     }
 
     // If this navigation state has completed, listen for messages.
-    if (
-      !e.loading &&
-      this.ref
-    ) {
+    if (!e.loading && this.ref) {
       this.ref.injectJavaScript(injectPostMessage);
     }
 
@@ -51,9 +42,8 @@ class WebViewPostMessage extends React.PureComponent {
   };
 
   render() {
-
     // Do not send onMessage to the React Native WebView, since it is not supported on iOS.
-    const props = {...this.props};
+    const props = { ...this.props };
     delete props.forwardedRef;
     delete props.onMessage;
 
@@ -68,9 +58,6 @@ class WebViewPostMessage extends React.PureComponent {
 }
 
 // Export a component that allows refs to be forwarded, in case the user wants access to the WebView.
-export default React.forwardRef((props, ref) =>
-  <WebViewPostMessage
-    {...props}
-    forwardedRef={ref}
-  />
-);
+export default React.forwardRef((props, ref) => (
+  <WebViewPostMessage {...props} forwardedRef={ref} />
+));

@@ -14,8 +14,9 @@
     "@babel/preset-react": "^7.0.0-beta.56",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.0.0-beta.4",
-    "react": "^16.3.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-28.0.0.tar.gz",
+    "react": "^16.9.0",
+    "react-native": "^0.60.4",
+    "react-native-webview": "^6.9.0",
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0"
   },
@@ -28,9 +29,11 @@
   ],
   "license": "MIT",
   "main": "index.js",
+  "types": "index.d.ts",
   "peerDependencies": {
-    "react": "^16.3.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-28.0.0.tar.gz"
+    "react": "^16.9.0",
+    "react-native": "^0.60.4",
+    "react-native-web-view": "^6.9.0"
   },
   "repository": {
     "type": "git",
