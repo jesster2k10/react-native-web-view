@@ -1,6 +1,6 @@
 {
   "name": "rn-webview",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Charles Stover <npmjs@charlesstover.com>",
   "bugs": {
     "url": "https://github.com/CharlesStover/react-native-web-view/issues"
